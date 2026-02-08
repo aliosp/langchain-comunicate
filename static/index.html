@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LangChain AI 创作平台</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <span class="logo-icon">🎬</span>
+                <h1>AI Studio</h1>
+            </div>
+            <nav>
+                <button class="nav-item active" data-tab="storyboard">
+                    <span class="icon">🖼️</span> 分镜脚本生成
+                </button>
+                <button class="nav-item" data-tab="chat">
+                    <span class="icon">💬</span> 智能助手
+                </button>
+            </nav>
+            <div class="status-indicator">
+                <div class="dot"></div>
+                系统就绪
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <!-- Storyboard Tab -->
+            <section id="storyboard-tab" class="tab-content active">
+                <header>
+                    <h2>分镜脚本创作</h2>
+                    <p>输入你的剧本或剧情亮点，AI 将为你规划专业镜头。</p>
+                </header>
+                
+                <div class="input-card">
+                    <textarea id="story-input" placeholder="输入剧本内容，例如：在一个雨夜，一名侦探走进破旧的小酒馆..."></textarea>
+                    <div class="actions">
+                        <small>支持详细剧情描述或改写要求</small>
+                        <button id="generate-btn" class="primary-btn">开始创作</button>
+                    </div>
+                </div>
+
+                <div id="storyboard-results" class="results-grid">
+                    <!-- Cards will be injected here -->
+                    <div class="placeholder-empty">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1055/1055644.png" alt="preview" style="width: 64px; opacity: 0.3;">
+                        <p>等待生成分镜脚本...</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chat Tab -->
+            <section id="chat-tab" class="tab-content">
+                <header>
+                    <h2>智能天气助手</h2>
+                    <p>基于 GLM-4.7-Flash 的 Agent 演示，支持实时天气查询。</p>
+                </header>
+
+                <div class="chat-container">
+                    <div id="chat-messages" class="chat-messages">
+                        <div class="message assistant">
+                            你好！我是你的智能助手。你可以问我：“北京今天天气怎么样？”或者“明天出门需要带伞吗？”
+                        </div>
+                    </div>
+                    <div class="chat-input-area">
+                        <input type="text" id="chat-input" placeholder="输入您的问题...">
+                        <button id="send-btn">发送</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="hidden">
+        <div class="spinner"></div>
+        <p>AI 正在思考中...</p>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
